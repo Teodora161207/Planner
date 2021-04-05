@@ -1,0 +1,9 @@
+productShop\repository\JpaPriorityRepository.class
+productShop\domain\Note.class
+productShop\domain\Task.class
+productShop\repository\JpaEventRepository.class
+productShop\controller\HomeController.class
+productShop\domain\Priority.class
+productShop\repository\JpaNoteRepository.class
+productShop\repository\JpaTaskRepository.class
+productShop\domain\Event.class

@@ -1,0 +1,108 @@
+<!--suppress XmlInvalidId -->
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Products Shop</title>
+    <!-- CSS Global Compulsory -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark ">
+    <div class="container">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/index}">Home</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Priority
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" >
+                    <a th:each="m:${priorities} "class="dropdown-item" th:href="@{/priority/{id}(id=${m.id})}" th:text="${m.name}"><br/></a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Category
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" >
+                    <a th:each="m:${categories} "class="dropdown-item" th:href="@{/category/{id}(id=${m.id})}" th:text="${m.name}"><br/></a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Add new
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" >
+                    <a class="dropdown-item" th:href="@{/task/add}">Task</a>
+                    <a class="dropdown-item" th:href="@{/event/add}">Event</a>
+                    <a class="dropdown-item" th:href="@{/note/add}">Note</a>
+
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+<main class="container col-5">
+    <form class="form" enctype="multipart/form-data" method="post" action="#" th:action="@{/event/update/{id} (id=${event.id})}">
+        <div class="form-group">
+            <label for="eventName">Name</label>
+            <input id="eventName" type="eventName" class="form-control" th:value="*{event.name}" name="name" placeholder="Enter name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="eventDescription">Description</label>
+            <input id="eventDescription" class="form-control" type="eventDescription" th:value="*{event.description}" name="description" placeholder="Enter description" >
+        </div>
+
+
+        <div class="form-group">
+            <label for="eventLocation">Location</label>
+            <input id="eventLocation" class="form-control" type="eventLocation" th:value="*{event.location}" name="location" placeholder="Enter location" >
+        </div>
+
+
+        <div class="form-group">
+            <label for="eventDate">Date</label>
+            <input id="eventDate" class="form-control" type="date" th:field="*{event.date}" name="date" placeholder="Enter date" >
+        </div>
+
+
+        <div class="form-group">
+            <label for="eventTime">Time</label>
+            <input id="eventTime" class="form-control" type="time" th:value="*{event.time}" name="time" placeholder="Enter time" >
+        </div>
+
+        <div class="form-group">
+            <label for="priority">Priority:</label>
+            <select class="form-control" th:value="*{event.priority.id}" >
+                <option th:each="m : ${priorities}" th:value="${m.id}" th:text="${m.name}">
+
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="category">Category:</label>
+            <select class="form-control" th:value="*{event.category.id}" >
+                <option th:each="m : ${categories}" th:value="${m.id}" th:text="${m.name}">
+
+                </option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+</main>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
